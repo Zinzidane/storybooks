@@ -28,15 +28,14 @@ const {
   truncate,
   stripTags,
   formatDate,
-  select
+  select,
+  editIcon
 } = require('./helpers/hbs');
 
 // Map global promises
 mongoose.Promise = global.Promise;
 // Mongoose Connect
-mongoose.connect(keys.mongoURI, {
-  useMongoClient:true
-})
+mongoose.connect(keys.mongoURI, {useNewUrlParser: true })
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
@@ -55,7 +54,8 @@ app.engine('handlebars', exphbs({
     truncate: truncate,
     stripTags: stripTags,
     formatDate:formatDate,
-    select:select
+    select:select,
+    editIcon: editIcon
   },
   defaultLayout:'main'
 }));
